@@ -1,0 +1,39 @@
+# Analysis options for SafeBirth Connect Flutter app
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # Style rules
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    prefer_final_fields: true
+    prefer_final_locals: true
+    avoid_print: true
+    
+    # Documentation
+    public_member_api_docs: false
+    
+    # Formatting
+    lines_longer_than_80_chars: false
+    
+    # Best practices
+    avoid_empty_else: true
+    avoid_relative_lib_imports: true
+    prefer_single_quotes: true
+    sort_pub_dependencies: true
+    unawaited_futures: true
+    
+    # Null safety
+    avoid_null_checks_in_equality_operators: true
+    
+    # Testing
+    test_types_in_equals: true
+
+analyzer:
+  errors:
+    missing_required_param: error
+    missing_return: error
+    invalid_annotation_target: ignore
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"

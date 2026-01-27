@@ -1,0 +1,127 @@
+spring:
+  application:
+    name: safebirth-connect
+
+  profiles:
+    active: dev
+
+  datasource:
+    url: jdbc:h2:file:./data/safebirth;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: false
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+# Twilio Configuration (use environment variables in production)
+twilio:
+  account-sid: ${TWILIO_ACCOUNT_SID:your_account_sid}
+  auth-token: ${TWILIO_AUTH_TOKEN:your_auth_token}
+  phone-number: ${TWILIO_PHONE_NUMBER:+1234567890}
+  # Set to true to use mock SMS gateway (no actual SMS sent)
+  mock-enabled: true
+
+# Application Configuration
+safebirth:
+  # Supported languages for SMS commands
+  languages:
+    - ARABIC
+    - ENGLISH
+  # Default language for responses
+  default-language: ENGLISH
+
+logging:
+  level:
+    com.safebirth: DEBUG
+    org.hibernate.SQL: INFO
+
+---
+# Development Profile
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  h2:
+    console:
+      enabled: true
+
+  jpa:
+    show-sql: true
+
+twilio:
+  mock-enabled: true
+
+logging:
+  level:
+    com.safebirth: DEBUG
+
+---
+# Production Profile
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  h2:
+    console:
+      enabled: false
+
+  jpa:
+    show-sql: false
+
+twilio:
+  mock-enabled: false
+
+logging:
+  level:
+    com.safebirth: INFO
+
+---
+# Cloud Run Profile
+spring:
+  config:
+    activate:
+      on-profile: cloudrun
+
+  datasource:
+    url: jdbc:h2:mem:safebirth;DB_CLOSE_DELAY=-1
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: false
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+twilio:
+  mock-enabled: ${TWILIO_MOCK_ENABLED:true}
+
+logging:
+  level:
+    root: WARN
+    com.safebirth: INFO
+    org.springframework: WARN
+    org.hibernate: WARN
