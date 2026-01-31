@@ -1,0 +1,70 @@
+name: safebirth_connect
+description: SMS-first maternal support coordination app for NGO coordinators and volunteers.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State Management
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+
+  # Networking
+  dio: ^5.4.3+1
+
+  # Local Database
+  sqflite: ^2.3.3+1
+  path: ^1.9.0
+
+  # Localization
+  intl: ^0.20.2
+
+  # Data Classes
+  equatable: ^2.0.5
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+
+  # Routing
+  go_router: ^14.0.2
+
+  # UI
+  flutter_svg: ^2.0.10+1
+  google_fonts: ^6.1.0
+
+  # Utils
+  logger: ^2.2.0
+  shared_preferences: ^2.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  
+  # Code Generation
+  build_runner: ^2.4.9
+  riverpod_generator: ^2.4.0
+  freezed: ^2.5.2
+  json_serializable: ^6.7.1
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+
+#  fonts:
+#    - family: Cairo
+#      fonts:
+#        - asset: assets/fonts/Cairo-Regular.ttf
+#        - asset: assets/fonts/Cairo-Bold.ttf
+#          weight: 700
+#        - asset: assets/fonts/Cairo-SemiBold.ttf
+#          weight: 600

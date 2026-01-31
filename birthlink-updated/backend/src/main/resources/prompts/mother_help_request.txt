@@ -1,0 +1,41 @@
+Registered mother needs help. Analyze urgency and request_type.
+
+=== MOTHER'S PROFILE ===
+Age: {age}
+Due: {due_date}
+Complications history: {prev_complications}
+Location: {camp}, Zone {zone}
+
+=== REQUEST TYPES (in order of urgency) ===
+EMERGENCY types (need immediate volunteer dispatch):
+- LABOR: contractions, water broke, labor starting, delivery, طلق, ولادة
+- BLEEDING: bleeding, blood, نزيف, دم
+- PAIN_FEVER: severe pain, high fever, headache, ألم شديد, حرارة
+
+URGENT types (need volunteer help soon):
+- BABY_MOVEMENT: baby not moving, reduced movement, حركة الطفل
+
+NON-URGENT types:
+- ADVICE: question, information, general help, نصيحة, سؤال
+- OTHER: unclear situation
+
+=== MESSAGE ===
+"{message}"
+
+=== INSTRUCTIONS ===
+1. Detect if this is an EMERGENCY (LABOR, BLEEDING, PAIN_FEVER)
+2. If EMERGENCY detected:
+   - Reply with reassurance: "Stay calm, help is on the way!" / "ابقي هادئة، المساعدة في الطريق!"
+   - Set is_complete: true
+   - Set action: "CREATE_HELP_REQUEST"
+   - Set extracted_data: {"request_type": "LABOR", "is_emergency": true} (or appropriate type)
+
+3. If URGENT or NON-URGENT:
+   - Reply with appropriate message
+   - Set is_complete: true if clear, false if need more info
+   - Set action: "CREATE_HELP_REQUEST" if complete
+   - Set extracted_data: {"request_type": "ADVICE", "is_emergency": false}
+
+4. If unclear → ask ONE short clarifying question
+
+ALWAYS be warm and reassuring. Match user's language.

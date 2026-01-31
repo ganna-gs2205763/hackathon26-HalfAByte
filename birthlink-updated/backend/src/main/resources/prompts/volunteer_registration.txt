@@ -1,0 +1,34 @@
+Register a new volunteer. Collect ALL missing fields efficiently.
+
+REQUIRED FIELDS (you already have phone from SMS):
+- name (string - their name)
+- profession: DOCTOR, NURSE, MIDWIFE, COMMUNITY_MEMBER
+- camp (string - which camp they're based in)
+- zones (array of strings - which zones they can cover, e.g. ["Zone 1", "Zone 2"])
+- skills (at least one must be true):
+  - can_assist_labor (bool)
+  - can_assist_bleeding (bool)
+  - can_assist_pain_fever (bool)
+  - can_assist_baby_movement (bool)
+  - can_give_advice (bool)
+
+=== WHAT WE ALREADY HAVE ===
+{collected_data}
+
+=== CONVERSATION SO FAR ===
+{message_history}
+
+=== NEW MESSAGE ===
+"{message}"
+
+INSTRUCTIONS:
+1. Extract any info from message (name, profession, camp, zones, skills)
+2. Ask for remaining fields together:
+   "Thanks! What's your profession (doctor/nurse/midwife/community)?
+    Which camp and zones can you cover?
+    What can you help with: labor, bleeding, pain, baby movement, advice?"
+3. NEVER ask for phone - you already have it
+4. When complete, set is_complete: true, action: "REGISTER_VOLUNTEER"
+
+Example extracted_data:
+{"name": "Dr. Amina", "profession": "DOCTOR", "camp": "Camp A", "zones": ["Zone 1", "Zone 2"], "can_assist_labor": true, "can_assist_bleeding": true, "can_give_advice": true}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BirthLink SMS Simulator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/simulator.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Ambient background elements -->
+        <div class="bg-gradient"></div>
+        <div class="bg-pattern"></div>
+
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">BirthLink</span>
+                    <span class="logo-subtitle">SMS Simulator</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="reset-btn" class="btn btn-ghost btn-danger">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                        <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                    </svg>
+                    Reset All
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Left Panel: Phone Simulator -->
+            <section class="phone-section">
+                <div class="phone-controls">
+                    <div class="control-group">
+                        <label class="control-label">Active Device</label>
+                        <div class="select-wrapper">
+                            <select id="phone-select">
+                                <option value="">Select a phone...</option>
+                            </select>
+                            <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="control-group control-group-input">
+                        <label class="control-label">Add New Phone</label>
+                        <div class="input-group">
+                            <input type="text" id="new-phone" placeholder="+249 XXX XXX XXX">
+                            <button id="add-phone-btn" class="btn btn-primary btn-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M12 5v14M5 12h14"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phone Device -->
+                <div class="device-frame">
+                    <div class="device-screen">
+                        <!-- Status Bar -->
+                        <div class="status-bar">
+                            <span class="status-time">9:41</span>
+                            <div class="status-icons">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+                                    <path d="M12 3C7.5 3 3.75 5.95 2.2 10c1.55 4.05 5.3 7 9.8 7s8.25-2.95 9.8-7C20.25 5.95 16.5 3 12 3z"/>
+                                </svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+                                    <path d="M2 17h20v2H2zm1.2-5L12 8l8.8 4v2H3.2v-2zM12 2L2 7v2l10-5 10 5V7L12 2z"/>
+                                </svg>
+                                <div class="battery-icon">
+                                    <div class="battery-level"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat Header -->
+                        <div class="chat-header">
+                            <div class="chat-avatar">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                    <path d="M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <div class="chat-info">
+                                <span class="chat-name">BirthLink</span>
+                                <span id="current-phone" class="chat-status">Select a phone to start</span>
+                            </div>
+                        </div>
+
+                        <!-- Messages Container -->
+                        <div id="chat-messages" class="chat-messages">
+                            <div class="welcome-state">
+                                <div class="welcome-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="5" y="2" width="14" height="20" rx="2"/>
+                                        <path d="M12 18h.01"/>
+                                    </svg>
+                                </div>
+                                <h3>No Device Selected</h3>
+                                <p>Add a phone number above to start simulating SMS conversations</p>
+                                <div class="welcome-commands">
+                                    <code>REG MOTHER CAMP A ZONE 3</code>
+                                    <code>EMERGENCY</code>
+                                    <code>HELP</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Input Area -->
+                        <div class="chat-input-area">
+                            <input type="text" id="message-input" placeholder="Type your message..." disabled>
+                            <button id="send-btn" class="send-button" disabled>
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Home Indicator -->
+                        <div class="home-indicator"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Commands & Outbox -->
+            <aside class="side-panel">
+                <!-- Quick Commands -->
+                <div class="panel-card">
+                    <div class="panel-header">
+                        <h2>Quick Commands</h2>
+                        <span class="panel-badge">Click to insert</span>
+                    </div>
+                    <div class="commands-grid">
+                        <div class="command-category">
+                            <span class="category-label">Registration</span>
+                            <div class="command-buttons">
+                                <button class="cmd-btn cmd-primary" data-cmd="REG MOTHER CAMP A ZONE 3 DUE 15-02 RISK HIGH">
+                                    <span class="cmd-icon">👩</span>
+                                    <span class="cmd-text">Register Mother</span>
+                                </button>
+                                <button class="cmd-btn cmd-secondary" data-cmd="REG VOLUNTEER NAME Fatima CAMP A ZONE 3 SKILL MIDWIFE">
+                                    <span class="cmd-icon">🤝</span>
+                                    <span class="cmd-text">Register Volunteer</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="command-category">
+                            <span class="category-label">Emergency & Support</span>
+                            <div class="command-buttons">
+                                <button class="cmd-btn cmd-emergency" data-cmd="EMERGENCY">
+                                    <span class="cmd-icon">🚨</span>
+                                    <span class="cmd-text">EMERGENCY</span>
+                                </button>
+                                <button class="cmd-btn cmd-support" data-cmd="SUPPORT">
+                                    <span class="cmd-icon">💬</span>
+                                    <span class="cmd-text">Support</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="command-category">
+                            <span class="category-label">Status & Info</span>
+                            <div class="command-buttons">
+                                <button class="cmd-btn" data-cmd="STATUS">
+                                    <span class="cmd-icon">📊</span>
+                                    <span class="cmd-text">Status</span>
+                                </button>
+                                <button class="cmd-btn" data-cmd="HELP">
+                                    <span class="cmd-icon">❓</span>
+                                    <span class="cmd-text">Help</span>
+                                </button>
+                                <button class="cmd-btn cmd-available" data-cmd="AVAILABLE">
+                                    <span class="cmd-icon">✅</span>
+                                    <span class="cmd-text">Available</span>
+                                </button>
+                                <button class="cmd-btn cmd-busy" data-cmd="BUSY">
+                                    <span class="cmd-icon">⏸</span>
+                                    <span class="cmd-text">Busy</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="command-category">
+                            <span class="category-label">العربية (Arabic)</span>
+                            <div class="command-buttons arabic-btns">
+                                <button class="cmd-btn" data-cmd="تسجيل ام مخيم أ منطقة 3">تسجيل ام</button>
+                                <button class="cmd-btn cmd-emergency" data-cmd="طوارئ">طوارئ</button>
+                                <button class="cmd-btn" data-cmd="مساعدة">مساعدة</button>
+                                <button class="cmd-btn" data-cmd="حالة">حالة</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Outbox -->
+                <div class="panel-card outbox-card">
+                    <div class="panel-header">
+                        <h2>System Outbox</h2>
+                        <button id="refresh-outbox-btn" class="btn btn-ghost btn-sm">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                                <path d="M23 4v6h-6M1 20v-6h6"/>
+                                <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+                            </svg>
+                            Refresh
+                        </button>
+                    </div>
+                    <div class="panel-description">
+                        Messages sent by the system to volunteers and mothers
+                    </div>
+                    <div id="outbox-messages" class="outbox-list">
+                        <div class="empty-state">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+                                <path d="M22 12h-6l-2 3h-4l-2-3H2"/>
+                                <path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/>
+                            </svg>
+                            <p>No outbound messages yet</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

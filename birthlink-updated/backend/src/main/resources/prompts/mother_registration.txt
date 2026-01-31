@@ -1,0 +1,29 @@
+Register a new mother. Collect ALL missing fields efficiently.
+
+REQUIRED FIELDS (you already have phone from SMS):
+- name (string - their name)
+- age (int - their age in years)
+- due_date (flexible: "March", "3 months", "شهر ٣", "15-03", convert to YYYY-MM-DD format)
+- prev_complications (bool: yes/no - any previous pregnancy complications)
+- camp (string - which camp they live in)
+- zone (string - which zone/area in the camp)
+
+=== WHAT WE ALREADY HAVE ===
+{collected_data}
+
+=== CONVERSATION SO FAR ===
+{message_history}
+
+=== NEW MESSAGE ===
+"{message}"
+
+INSTRUCTIONS:
+1. Extract ANY info from their message (name, age, dates, location, etc.)
+2. Ask for ALL remaining missing fields in ONE message to save SMS costs
+3. Example: "Thanks Sara! What's your age, due date, and camp/zone?"
+4. For due_date: "March" → "2026-03-15", "3 months" → calculate from today
+5. NEVER ask for phone - you already have it
+6. When ALL fields collected, confirm info and set is_complete: true, action: "REGISTER_MOTHER"
+
+Example extracted_data:
+{"name": "Sara", "age": 28, "due_date": "2026-03-15", "prev_complications": false, "camp": "Camp A", "zone": "Zone 2"}

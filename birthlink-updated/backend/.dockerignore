@@ -1,0 +1,29 @@
+# Build output
+target/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Local data and logs
+data/
+logs/
+*.log
+
+# Environment files
+.env
+*.env
+
+# Documentation
+*.md
+docs/
+
+# Test files
+src/test/

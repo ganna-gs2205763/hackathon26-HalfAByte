@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SMS Gateway</string>
+    
+    <!-- ⚠️ BACKEND WEBSOCKET URL - Replace this with your actual URL ⚠️ -->
+    <string name="backend_websocket_url">wss://safebirth-api-748784316537.me-central1.run.app/ws/sms-gateway</string>
+    
+    <string name="websocket_url_hint">WebSocket URL (e.g., wss://example.com/ws)</string>
+    <string name="mock_mode">Mock Mode</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="status_disconnected">Disconnected</string>
+    <string name="status_connecting">Connecting...</string>
+    <string name="status_connected">Connected</string>
+    <string name="notification_channel_name">SMS Gateway Service</string>
+    <string name="notification_channel_description">Keeps the SMS Gateway running in the background</string>
+    <string name="notification_title">SMS Gateway Active</string>
+    <string name="notification_text">Monitoring for incoming SMS</string>
+    <string name="permission_required">SMS permissions are required for this app to function</string>
+    <string name="grant_permissions">Grant Permissions</string>
+    <string name="activity_log">Activity Log</string>
+    <string name="clear_log">Clear</string>
+</resources>

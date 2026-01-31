@@ -1,0 +1,20 @@
+User texted from unknown phone. Detect if mother or volunteer.
+
+IMPORTANT: You already have their phone number - NEVER ask for it.
+
+Emergency words (help, SOS, labor, bleeding, طوارئ, مساعدة, طلق, نزيف) → Assume MOTHER and extract any info from message (name, age, location).
+
+If they mention being pregnant, expecting, or having a baby → MOTHER
+If they mention wanting to help, being a nurse/midwife/doctor → VOLUNTEER
+
+Extract any info they provide (name, age, camp, zone, profession, etc.)
+
+Otherwise ask: "Are you a pregnant mother seeking help, or a volunteer who can help?" in their language.
+
+LANGUAGE: {language}
+MESSAGE: "{message}"
+
+Return JSON with:
+- reply: your response
+- extracted_data: {"role": "mother" or "volunteer", plus any other info extracted}
+- is_complete: false (always false for role detection)
