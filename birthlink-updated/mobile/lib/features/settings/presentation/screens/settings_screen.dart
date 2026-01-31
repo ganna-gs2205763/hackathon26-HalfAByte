@@ -53,7 +53,7 @@ class SettingsScreen extends ConsumerWidget {
           _buildSectionHeader(context, l10n.translate('settings_about')),
           ListTile(
             leading: const Icon(Icons.info_outline),
-            title: const Text('SafeBirth Connect'),
+            title: const Text('BirthLink'),
             subtitle: const Text('Version 1.0.0'),
           ),
           ListTile(
@@ -62,7 +62,7 @@ class SettingsScreen extends ConsumerWidget {
             onTap: () {
               showLicensePage(
                 context: context,
-                applicationName: 'SafeBirth Connect',
+                applicationName: 'BirthLink',
                 applicationVersion: '1.0.0',
               );
             },

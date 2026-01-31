@@ -17,7 +17,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
   final role = ref.watch(roleProvider);
 
   return GoRouter(
-    initialLocation: '/inbox',  // Start at inbox (volunteer's main screen)
+    initialLocation: '/heatmap',  // Start at heatmap (primary screen)
     debugLogDiagnostics: true,
     routes: [
       // Role selection (outside shell)

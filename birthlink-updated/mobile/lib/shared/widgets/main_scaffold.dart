@@ -23,14 +23,10 @@ class _BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final location = GoRouterState.of(context).uri.path;
 
-    // Inbox first (primary volunteer screen), then dashboard, heatmap, then settings
+    // Only heatmap and settings
     int currentIndex = 0;
-    if (location.startsWith('/dashboard')) {
+    if (location.startsWith('/settings')) {
       currentIndex = 1;
-    } else if (location.startsWith('/heatmap')) {
-      currentIndex = 2;
-    } else if (location.startsWith('/settings')) {
-      currentIndex = 3;
     }
 
     return NavigationBar(
@@ -38,30 +34,14 @@ class _BottomNavBar extends StatelessWidget {
       onDestinationSelected: (index) {
         switch (index) {
           case 0:
-            context.go('/inbox');
-            break;
-          case 1:
-            context.go('/dashboard');
-            break;
-          case 2:
             context.go('/heatmap');
             break;
-          case 3:
+          case 1:
             context.go('/settings');
             break;
         }
       },
       destinations: [
-        NavigationDestination(
-          icon: const Icon(Icons.inbox_outlined),
-          selectedIcon: const Icon(Icons.inbox),
-          label: context.tr('nav_inbox'),
-        ),
-        NavigationDestination(
-          icon: const Icon(Icons.dashboard_outlined),
-          selectedIcon: const Icon(Icons.dashboard),
-          label: context.tr('nav_dashboard'),
-        ),
         NavigationDestination(
           icon: const Icon(Icons.grid_view_outlined),
           selectedIcon: const Icon(Icons.grid_view),
